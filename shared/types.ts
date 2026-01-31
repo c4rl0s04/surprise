@@ -1,0 +1,1 @@
+export type Universe = 'HUB' | 'IRONMAN' | 'B99' | 'EUROLEAGUE';
