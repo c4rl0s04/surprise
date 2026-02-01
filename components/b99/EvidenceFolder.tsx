@@ -158,11 +158,6 @@ export const EvidenceFolder: React.FC<EvidenceFolderProps> = ({ onCaseClosed }) 
                     ) : (
                       <User size={80} className="text-slate-400" />
                     )}
-                    
-                    {/* Badge Overlay */}
-                    <div className="absolute bottom-2 w-full text-center">
-                        <div className="bg-slate-800 text-white text-xs px-2 py-1 inline-block font-mono shadow-md border border-slate-600">NYPD 98441</div>
-                    </div>
                 </div>
                 <div className="mt-2 text-center font-['Special_Elite']">
                     <h2 className="text-xl font-bold uppercase truncate">{TARGET_NAME}</h2>
