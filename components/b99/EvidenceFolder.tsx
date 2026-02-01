@@ -5,9 +5,9 @@ import { TARGET_NAME } from '../../shared/config';
 
 // --- IMAGE CONFIGURATION ---
 // NOTE: Ensure these files exist in an 'images' folder at the project root
-const MUGSHOT_URL = "./images/profile-mugshot.jpg"; 
-const EVIDENCE_1_URL = "./images/evidence-smile.jpg"; 
-const EVIDENCE_2_URL = "./images/evidence-eyes.jpg"; 
+const MUGSHOT_URL = "/valentine-proposal/images/profile-mugshot.png"; 
+const EVIDENCE_1_URL = "/valentine-proposal/images/evidence-smile.JPEG"; 
+const EVIDENCE_2_URL = "/valentine-proposal/images/evidence-eyes.JPEG"; 
 
 // --- HELPER COMPONENTS ---
 
