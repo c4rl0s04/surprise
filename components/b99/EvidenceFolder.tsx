@@ -152,7 +152,7 @@ export const EvidenceFolder: React.FC<EvidenceFolderProps> = ({ onCaseClosed }) 
             
             {/* Mugshot Area */}
             <div className="bg-white p-3 shadow-md rotate-1 transform transition-transform hover:rotate-0 shrink-0">
-                <div className="w-full aspect-square bg-slate-200 flex items-center justify-center border border-slate-300 relative overflow-hidden group">
+                <div className="w-full aspect-[3/4] bg-slate-200 flex items-center justify-center border border-slate-300 relative overflow-hidden group">
                     {MUGSHOT_URL ? (
                       <img src={MUGSHOT_URL} alt="Mugshot" className="w-full h-full object-cover grayscale-[20%] contrast-125 sepia-[.2]" />
                     ) : (
