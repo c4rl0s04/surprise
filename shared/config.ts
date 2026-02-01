@@ -1,8 +1,11 @@
-// !!! IMPORTANT !!!
+// --- ACTIVE CONFIGURATION FILE ---
+// This file is used by the application (imported via ./shared/config).
+// The config.ts in the root directory is unused and can be deleted.
+
 // REPLACE "0000000000" WITH YOUR ACTUAL WHATSAPP NUMBER
 // Format: Country Code + Number (No plus signs, no dashes, no spaces)
-// Example for US: 15551234567
-// Example for Spain: 34600123456
-// Example for UK: 447700900000
+// Example: 15551234567
+export const YOUR_WHATSAPP_NUMBER = "646661163";
 
-export const YOUR_WHATSAPP_NUMBER = "0000000000";
+// CHANGE THIS TO HER NAME
+export const TARGET_NAME = "JUNE MARTÍNEZ BORREGUERO";

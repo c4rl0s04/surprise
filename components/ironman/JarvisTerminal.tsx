@@ -4,6 +4,7 @@ import { Activity, Heart, User, Flame, Star, AlertCircle } from 'lucide-react';
 import { HeartRateMonitor } from './widgets/HeartRateMonitor';
 import { CoreTempGauge } from './widgets/CoreTempGauge';
 import { LoveTrendGraph } from './widgets/LoveTrendGraph';
+import { TARGET_NAME } from '../../shared/config';
 
 interface JarvisTerminalProps {
   onBack: () => void;
@@ -70,7 +71,7 @@ export const JarvisTerminal = ({ onBack, onEngage, onAbort }: JarvisTerminalProp
            
            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
               <div className="inline-block bg-cyan-950/50 px-4 py-1 rounded border border-cyan-500/30 text-[10px] tracking-widest text-cyan-400 mb-4">
-                  TARGET ACQUIRED: LOML
+                  TARGET ACQUIRED: {TARGET_NAME}
               </div>
               <h2 className="text-3xl md:text-5xl font-bold tracking-[0.1em] text-white drop-shadow-[0_0_15px_rgba(6,182,212,0.8)] mb-2">
                  FINAL CALCULATION
@@ -91,7 +92,7 @@ export const JarvisTerminal = ({ onBack, onEngage, onAbort }: JarvisTerminalProp
                   <div className="space-y-2 font-mono text-xs">
                       <div className="flex justify-between items-center">
                           <span className="text-cyan-600">IDENTIDAD</span> 
-                          <span className="text-white font-bold tracking-widest">LOML</span>
+                          <span className="text-white font-bold tracking-widest">{TARGET_NAME}</span>
                       </div>
                       <div className="flex justify-between items-center">
                           <span className="text-cyan-600">APARIENCIA</span> 
@@ -152,7 +153,7 @@ export const JarvisTerminal = ({ onBack, onEngage, onAbort }: JarvisTerminalProp
                  style={{ clipPath: 'polygon(5% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 20%)' }}
                >
                  <span className="relative z-10 flex items-center justify-center gap-4">
-                    <Heart className="fill-white" size={20} /> ENGAGE PROTOCOL
+                    <Heart className="fill-white" size={20} /> INICIAR PROTOCOLO: SÍ
                  </span>
                </motion.button>
 
@@ -172,11 +173,13 @@ export const JarvisTerminal = ({ onBack, onEngage, onAbort }: JarvisTerminalProp
         variants={{ hidden: { x: 50, opacity: 0 }, visible: { x: 0, opacity: 1 } }}
         className="hidden md:flex flex-col gap-4 w-72"
       >
-         {/* Widget 3: Love Trend Graph */}
-         <LoveTrendGraph />
+         {/* Widget 3: Love Trend Graph - Takes remaining space */}
+         <div className="flex-1 min-h-0">
+             <LoveTrendGraph />
+         </div>
 
-         {/* Warning Panel */}
-         <div className="bg-red-950/20 border border-red-500/30 p-4 h-full flex flex-col justify-center">
+         {/* Warning Panel - Compact */}
+         <div className="bg-red-950/20 border border-red-500/30 p-4 shrink-0 flex flex-col justify-center">
              <div className="flex items-center gap-2 mb-2">
                  <AlertCircle size={14} className="text-red-500" />
                  <span className="text-[10px] text-red-500 font-bold">ALERTS</span>

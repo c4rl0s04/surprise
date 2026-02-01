@@ -35,7 +35,7 @@ export const ShotMeter = ({ onShootResult, gamePhase, greenZoneWidth = 10, meter
         // Increased speed for difficulty: Lower divisor = faster speed
         // Vertical (Dunk): Very fast explosive movement
         // Horizontal (3PT): Fast oscillation
-        const time = (Date.now() - startTime) / (meterType === 'VERTICAL' ? 250 : 350); 
+        const time = (Date.now() - startTime) / (meterType === 'VERTICAL' ? 120 : 180); 
         
         if (meterType === 'VERTICAL') {
           // 0 to 100 bounce (Power meter style)

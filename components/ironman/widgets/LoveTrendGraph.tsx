@@ -4,7 +4,7 @@ import { TrendingUp } from 'lucide-react';
 
 export const LoveTrendGraph = () => {
   return (
-    <div className="bg-black/80 border border-cyan-500/30 p-4 rounded-tr-xl relative flex flex-col h-48 overflow-hidden">
+    <div className="bg-black/80 border border-cyan-500/30 p-4 rounded-tr-xl relative flex flex-col h-full overflow-hidden">
          {/* Background Grid Pattern (CSS) */}
          <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
 

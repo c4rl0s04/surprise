@@ -31,10 +31,10 @@ export const B99Celebration: React.FC<B99CelebrationProps> = ({ onPropose }) => 
        </h1>
        
        <div className="bg-white p-6 rotate-1 shadow-lg border border-slate-200 mb-8 max-w-lg">
-         <p className="text-xl md:text-2xl leading-relaxed">
-           "Te quiero más de lo que Boyle quiere lavar su pelo."
+         <p className="text-xl md:text-2xl leading-relaxed font-['Special_Elite']">
+           "Te quiero más de lo que Jake ama a Die Hard."
            <br />
-           <span className="text-sm text-slate-500 mt-2 block font-sans italic">- Yo (probablemente)</span>
+           <span className="text-sm text-slate-500 mt-2 block font-sans italic">- Yo (Peralta style)</span>
          </p>
        </div>
        

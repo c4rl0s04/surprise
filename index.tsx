@@ -5,7 +5,7 @@ import { IronManPage } from './pages/IronManPage';
 import { B99Page } from './pages/B99Page';
 import { EuroleaguePage } from './pages/EuroleaguePage';
 import { Universe } from './shared/types';
-import { YOUR_WHATSAPP_NUMBER } from './shared/config';
+import { YOUR_WHATSAPP_NUMBER, TARGET_NAME } from './shared/config';
 import { FinalSuccessModal } from './components/shared/FinalSuccessModal';
 
 const App = () => {
@@ -21,16 +21,16 @@ const App = () => {
     // NOTE: The \n characters create new lines in the WhatsApp message
     switch (universe) {
       case 'IRONMAN':
-        text = "🤖 *JARVIS SYSTEM REPORT*\n\nTarget: Tony Stark (You)\nStatus: LOML detected\n\nProtocolo Eternidad: *ACTIVADO* 💍\n\nTe quiero 3000. ¡SÍ quiero ser tu San Valentín! 💥❤️";
+        text = `🤖 *JARVIS SYSTEM REPORT*\n\nTarget: ${TARGET_NAME}\nStatus: LOML detected\n\nProtocolo Eternidad: *ACTIVADO* 💍\n\nTe quiero 3000. ¡SÍ quiero ser tu San Valentín! 💥❤️`;
         break;
       case 'B99':
-        text = "🚨 *NINE-NINE! NEW CASE FILE* 🚨\n\nDetective: Santiago (Me)\nSuspect: You\nCrime: Stole my heart\n\nVERDICT: *GUILTY* (I accept!)\n\n¡SÍ! 🍩💍👮‍♀️";
+        text = `🚨 *NINE-NINE! NEW CASE FILE* 🚨\n\nDetective: Santiago (Me)\nSuspect: ${TARGET_NAME}\nCrime: Stole my heart\n\nVERDICT: *GUILTY* (I accept!)\n\n¡SÍ! 🍩💍👮‍♀️`;
         break;
       case 'EUROLEAGUE':
-        text = "🏀 *OFFICIAL SCORESHEET* 🏀\n\nMatch: Final Four of Love\nResult: *WINNER*\n\nHe firmado el contrato más importante de mi vida (MVP).\n\n¡Nos vamos a la final! ¡SÍ QUIERO! 🏆❤️📝";
+        text = `🏀 *OFFICIAL SCORESHEET* 🏀\n\nMatch: Final Four of Love\nMVP: ${TARGET_NAME}\n\nHe firmado el contrato más importante de mi vida.\n\n¡Nos vamos a la final! ¡SÍ QUIERO! 🏆❤️📝`;
         break;
       default:
-        text = "✨ *MULTIVERSE UPDATE* ✨\n\nEntré al Multiverso... ¡y dije que SÍ a ser tu San Valentín! 💍💖";
+        text = `✨ *MULTIVERSE UPDATE* ✨\n\nEntré al Multiverso... ¡y dije que SÍ a ser tu San Valentín! 💍💖`;
         break;
     }
 

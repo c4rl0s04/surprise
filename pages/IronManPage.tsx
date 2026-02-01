@@ -6,6 +6,7 @@ import { ArcReactor } from '../components/ironman/ArcReactor';
 import { GlitchSystem } from '../components/ironman/GlitchSystem';
 import { JarvisTerminal } from '../components/ironman/JarvisTerminal';
 import { SelfDestructModal } from '../components/ironman/SelfDestructModal';
+import { TARGET_NAME } from '../shared/config';
 
 export const IronManPage = ({ onBack, onPropose }: { onBack: () => void, onPropose: () => void }) => {
   // Flow: SCANNING -> GRANTED -> POWER_FAILURE -> STABILIZING (Mini-game) -> ANALYZING (Animation) -> ACTIVE -> CELEBRATION
@@ -176,7 +177,7 @@ export const IronManPage = ({ onBack, onPropose }: { onBack: () => void, onPropo
                   ESCANEO FACIAL...
                 </h2>
                 <div className="mt-2 text-xs text-cyan-700 font-mono">
-                  IDENTIFICANDO SUJETO
+                  IDENTIFICANDO SUJETO: {TARGET_NAME}
                 </div>
              </div>
           </motion.div>
@@ -293,38 +294,59 @@ export const IronManPage = ({ onBack, onPropose }: { onBack: () => void, onPropo
             key="celebration"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="z-30 text-center max-w-2xl px-4"
+            className="z-30 text-center max-w-2xl px-4 w-full"
           >
-            <div className="relative mb-8">
-               <div className="absolute inset-0 bg-red-500 blur-[80px] opacity-30 animate-pulse"></div>
-               <Heart size={120} className="text-red-500 mx-auto fill-red-500/20 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]" />
-               <motion.div 
-                 animate={{ scale: [1, 1.2, 1] }} 
-                 transition={{ repeat: Infinity, duration: 1.5 }}
-                 className="absolute inset-0 flex items-center justify-center"
-               >
-                 <div className="w-40 h-40 border-2 border-red-400/30 rounded-full animate-spin-slow absolute"></div>
-               </motion.div>
+            {/* Added container for the card effect */}
+            <div className="relative bg-black/80 backdrop-blur-xl border-2 border-red-500/30 p-8 md:p-12 rounded-3xl shadow-[0_0_60px_rgba(239,68,68,0.3)] overflow-hidden">
+                
+                {/* Decorative Corners */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-red-500 rounded-tl-xl"></div>
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-red-500 rounded-tr-xl"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-red-500 rounded-bl-xl"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-red-500 rounded-br-xl"></div>
+                
+                {/* Background Scanline */}
+                 <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(220,38,38,0.05)_50%)] bg-[length:100%_4px] pointer-events-none"></div>
+
+                <div className="relative z-10">
+                    <div className="relative mb-8">
+                       <div className="absolute inset-0 bg-red-500 blur-[80px] opacity-20 animate-pulse"></div>
+                       <Heart size={100} className="text-red-500 mx-auto fill-red-500/20 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]" />
+                       <motion.div 
+                         animate={{ scale: [1, 1.2, 1] }} 
+                         transition={{ repeat: Infinity, duration: 1.5 }}
+                         className="absolute inset-0 flex items-center justify-center"
+                       >
+                         <div className="w-32 h-32 border-2 border-red-400/30 rounded-full animate-spin-slow absolute"></div>
+                       </motion.div>
+                    </div>
+
+                    <h2 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-500 to-red-400 tracking-widest mb-6 drop-shadow-sm">
+                      PROTOCOLO ACEPTADO
+                    </h2>
+                    
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-red-500/50 to-transparent my-6"></div>
+
+                    <p className="text-lg md:text-xl text-red-100 mb-8 font-mono leading-relaxed italic">
+                      "¿Prueba de que Tony Stark tiene corazón? <br/> No. Prueba de que yo tengo el tuyo."
+                    </p>
+
+                    <motion.button
+                      onClick={onPropose}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="group relative w-full md:w-auto flex items-center justify-center gap-3 mx-auto px-8 py-4 bg-red-600 hover:bg-red-500 text-white transition-all duration-300 uppercase tracking-widest font-bold text-lg rounded-xl shadow-[0_0_20px_rgba(220,38,38,0.5)] overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform skew-y-12"></div>
+                      <Send size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                      <span className="relative z-10">CONFIRMAR TRANSMISIÓN</span>
+                    </motion.button>
+                    
+                    <p className="mt-6 text-[10px] text-red-400/60 tracking-[0.5em] uppercase">
+                        Conexión Eterna Establecida
+                    </p>
+                </div>
             </div>
-
-            <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-500 tracking-widest mb-6">
-              PROTOCOLO ACEPTADO
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-cyan-100 mb-8 font-mono leading-relaxed">
-              "¿Prueba de que Tony Stark tiene corazón? <br/> No. Prueba de que yo tengo el tuyo."
-            </p>
-
-            <motion.button
-              onClick={onPropose}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group flex items-center justify-center gap-3 mx-auto px-8 py-4 bg-green-500/20 border border-green-500/50 rounded-full text-green-400 hover:bg-green-500 hover:text-white transition-all duration-300 uppercase tracking-widest font-bold text-lg"
-            >
-              <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-              CONFIRMAR TRANSMISIÓN
-            </motion.button>
-            <p className="mt-4 text-xs text-cyan-700 tracking-widest">ESTABLECIDO</p>
           </motion.div>
         )}
 

@@ -3,6 +3,7 @@ import { Universe } from '../shared/types';
 import { motion } from 'framer-motion';
 import { Zap, Briefcase, Trophy, Globe } from 'lucide-react';
 import { UniverseCard } from '../components/hub/UniverseCard';
+import { TARGET_NAME } from '../shared/config';
 
 export const Hub = ({ onSelect }: { onSelect: (u: Universe) => void }) => {
   return (
@@ -72,8 +73,8 @@ export const Hub = ({ onSelect }: { onSelect: (u: Universe) => void }) => {
 
         {/* Card 2: Brooklyn 99 */}
         <UniverseCard 
-          title="SANTIAGO"
-          subtitle="CASE FILE #99"
+          title={TARGET_NAME}
+          subtitle="GRAN ROBO"
           icon={<Briefcase size={40} />}
           delay={0.4}
           onClick={() => onSelect('B99')}
@@ -95,7 +96,7 @@ export const Hub = ({ onSelect }: { onSelect: (u: Universe) => void }) => {
       {/* Bottom Status Bar */}
       <div className="absolute bottom-0 w-full p-4 border-t border-white/5 flex justify-between text-[10px] text-slate-600 uppercase tracking-widest z-10 font-mono">
         <div>Coordinates: 40.7128° N, 74.0060° W</div>
-        <div>Target: LOML</div>
+        <div>Target: {TARGET_NAME}</div>
         <div>Version: 4.0.2</div>
       </div>
     </div>

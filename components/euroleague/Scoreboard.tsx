@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { TARGET_NAME } from '../../shared/config';
 
 interface ScoreboardProps {
   homeScore: number;
@@ -34,7 +35,7 @@ export const Scoreboard = ({ homeScore, visitorScore = 99, quarter = "Q4", time 
              </div>
              <div className="text-left hidden xs:block">
                 <div className="text-slate-400 text-[10px] font-bold tracking-widest uppercase">LOCAL</div>
-                <div className="text-white font-bold text-sm md:text-lg leading-none uppercase">NOSOTROS</div>
+                <div className="text-white font-bold text-sm md:text-lg leading-none uppercase max-w-[100px] truncate">{TARGET_NAME}</div>
                 <div className="flex gap-1 mt-1">
                    {[1,2,3,4].map(i => <div key={i} className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${i<=4 ? 'bg-red-500 shadow-[0_0_5px_#ef4444]' : 'bg-slate-700'}`}></div>)}
                    <span className="text-[8px] md:text-[10px] text-slate-500 ml-1 font-bold">FOULS</span>

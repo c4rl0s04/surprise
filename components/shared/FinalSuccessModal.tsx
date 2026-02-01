@@ -67,8 +67,8 @@ export const FinalSuccessModal = ({ isOpen, onClose, message, whatsappNumber }: 
             {/* Header */}
             <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-6 border-b border-slate-700 flex justify-between items-center">
               <div>
-                <h2 className="text-xl font-bold text-white">Transmission Ready</h2>
-                <p className="text-xs text-slate-400 uppercase tracking-wider mt-1">Status: ACCEPTED ✅</p>
+                <h2 className="text-xl font-bold text-white">¡SABÍA QUE DIRÍAS QUE SÍ! 😏</h2>
+                <p className="text-xs text-green-400 uppercase tracking-wider mt-1 font-bold">Respuesta: CONFIRMADA ❤️</p>
               </div>
               <button 
                 onClick={onClose}
@@ -80,15 +80,15 @@ export const FinalSuccessModal = ({ isOpen, onClose, message, whatsappNumber }: 
 
             {/* Body */}
             <div className="p-6 space-y-6">
-              <p className="text-slate-300 text-sm">
-                Your response has been generated. Choose how you want to send it:
+              <p className="text-slate-300 text-lg">
+                Venga va, mándame el mensaje y hazme feliz:
               </p>
 
               {/* Message Preview */}
               <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 relative group">
-                <div className="absolute top-2 right-2 text-[10px] text-slate-600 font-mono uppercase">Preview</div>
-                <p className="text-slate-300 text-sm font-mono whitespace-pre-wrap leading-relaxed">
-                  {message}
+                <div className="absolute top-2 right-2 text-[10px] text-slate-600 font-mono uppercase">TU MENSAJE</div>
+                <p className="text-slate-300 text-sm font-mono whitespace-pre-wrap leading-relaxed italic">
+                  "{message}"
                 </p>
               </div>
 
@@ -99,7 +99,7 @@ export const FinalSuccessModal = ({ isOpen, onClose, message, whatsappNumber }: 
                   className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] shadow-lg shadow-green-900/20"
                 >
                   <MessageCircle size={20} />
-                  Send via WhatsApp
+                  Enviar por WhatsApp
                 </button>
 
                 <div className="grid grid-cols-2 gap-3">
@@ -108,7 +108,7 @@ export const FinalSuccessModal = ({ isOpen, onClose, message, whatsappNumber }: 
                     className="flex flex-col items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white py-4 rounded-xl border border-slate-700 transition-colors"
                   >
                     {copied ? <Check className="text-green-400" size={24} /> : <Copy size={24} />}
-                    <span className="text-xs font-bold uppercase">{copied ? 'Copied!' : 'Copy Text'}</span>
+                    <span className="text-xs font-bold uppercase">{copied ? '¡Copiado!' : 'Copiar Texto'}</span>
                   </button>
 
                   <button
@@ -118,13 +118,13 @@ export const FinalSuccessModal = ({ isOpen, onClose, message, whatsappNumber }: 
                     {typeof navigator !== 'undefined' && navigator.share ? (
                         <>
                            <Smartphone size={24} />
-                           <span className="text-xs font-bold uppercase">Share App</span>
+                           <span className="text-xs font-bold uppercase">Compartir</span>
                         </>
                     ) : (
                         // Fallback visuals if native share isn't supported (acts as copy)
                         <>
                            <Share2 size={24} />
-                           <span className="text-xs font-bold uppercase">Share</span>
+                           <span className="text-xs font-bold uppercase">Compartir</span>
                         </>
                     )}
                   </button>
@@ -135,7 +135,7 @@ export const FinalSuccessModal = ({ isOpen, onClose, message, whatsappNumber }: 
             {/* Footer */}
             <div className="bg-slate-950 p-3 text-center border-t border-slate-800">
                 <p className="text-[10px] text-slate-500 uppercase tracking-widest">
-                    Secure Channel • End-to-End Encrypted
+                    No te hagas de rogar...
                 </p>
             </div>
           </motion.div>

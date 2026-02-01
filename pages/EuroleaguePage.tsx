@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Trophy, MessageCircle, Star, Users, Shirt, Activity, XCircle, AlertOctagon, AlertTriangle, PlayCircle, Gavel } from 'lucide-react';
 import { EuroleagueGame } from '../components/euroleague/EuroleagueGame';
+import { TARGET_NAME } from '../shared/config';
 
 type AppPhase = 'TUNNEL' | 'ROSTER' | 'GAME' | 'PROPOSAL';
 
@@ -209,7 +210,7 @@ export const EuroleaguePage = ({ onBack, onPropose }: { onBack: () => void, onPr
                            </div>
                         </div>
 
-                        <h2 className="text-4xl md:text-5xl text-white font-bold mb-4 uppercase leading-none">MVP DE LA TEMPORADA</h2>
+                        <h2 className="text-4xl md:text-5xl text-white font-bold mb-4 uppercase leading-none">MVP: {TARGET_NAME}</h2>
                         
                         <div className="bg-white/5 p-4 rounded-xl border border-white/10 backdrop-blur-sm mb-6">
                            <p className="text-xl text-slate-300 font-sans mb-3 leading-relaxed italic">
@@ -246,69 +247,83 @@ export const EuroleaguePage = ({ onBack, onPropose }: { onBack: () => void, onPr
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+                            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
                           >
+                             {/* Flashing Red Background Overlay for "Scare" effect */}
                              <motion.div 
-                               initial={{ scale: 0.9, y: 20 }}
-                               animate={{ scale: 1, y: 0 }}
-                               className="w-full max-w-xl bg-slate-900 border border-red-500/30 rounded-lg shadow-[0_0_50px_rgba(220,38,38,0.3)] overflow-hidden relative flex flex-col"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: [0, 0.8, 0.2, 0.6, 0.4] }}
+                                transition={{ duration: 0.5, times: [0, 0.1, 0.3, 0.4, 1] }}
+                                className="absolute inset-0 bg-red-600 mix-blend-color-dodge pointer-events-none"
+                             />
+
+                             <motion.div 
+                               initial={{ scale: 0.5, y: 50, rotate: -5 }}
+                               animate={{ 
+                                   scale: [0.5, 1.1, 1], 
+                                   y: 0, 
+                                   rotate: [0, -3, 3, -3, 3, 0], // Vibrate/Shake
+                                   x: [0, -10, 10, -5, 5, 0]
+                               }}
+                               transition={{ duration: 0.4, ease: "circOut" }}
+                               className="w-full max-w-xl bg-slate-900 border-4 border-red-600 rounded-xl shadow-[0_0_150px_rgba(220,38,38,1)] overflow-hidden relative flex flex-col transform"
                              >
-                                {/* Broadcast Header */}
-                                <div className="bg-red-700/20 border-b border-red-500/30 p-2 flex justify-between items-center relative overflow-hidden">
-                                   <div className="absolute inset-0 bg-red-600/10 animate-pulse"></div>
-                                   <div className="flex items-center gap-2 z-10">
-                                      <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
-                                      <span className="text-red-500 font-sans text-[10px] tracking-[0.2em] font-bold uppercase">OFFICIAL REVIEW IN PROGRESS</span>
+                                {/* Broadcast Header with "WHISTLE" visual */}
+                                <div className="bg-red-600 p-3 flex justify-between items-center relative overflow-hidden">
+                                   <div className="flex items-center gap-3 z-10 w-full justify-center">
+                                      <motion.div 
+                                        animate={{ scale: [1, 1.5, 1] }}
+                                        transition={{ repeat: Infinity, duration: 0.5 }}
+                                      >
+                                          <AlertOctagon size={32} className="text-white fill-red-800" />
+                                      </motion.div>
+                                      <span className="text-white font-black text-2xl tracking-widest uppercase italic shadow-black drop-shadow-md">¡¡ SILBATO !!</span>
+                                      <motion.div 
+                                        animate={{ scale: [1, 1.5, 1] }}
+                                        transition={{ repeat: Infinity, duration: 0.5 }}
+                                      >
+                                          <AlertOctagon size={32} className="text-white fill-red-800" />
+                                      </motion.div>
                                    </div>
                                 </div>
 
-                                <div className="p-8 relative">
+                                <div className="p-8 relative bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-900 via-red-950/20 to-slate-900">
+                                   
                                    {/* Main Headline */}
                                    <div className="text-center mb-8">
-                                      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-900/20 border-2 border-red-500/50 mb-4 shadow-[0_0_30px_rgba(220,38,38,0.2)]">
-                                          <AlertTriangle className="text-red-500 w-10 h-10 animate-pulse" />
-                                      </div>
-                                      <h2 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 uppercase tracking-tighter leading-none mb-1">
-                                        FALTA TÉCNICA
+                                      <motion.div 
+                                        animate={{ rotate: [0, 10, -10, 0] }}
+                                        transition={{ repeat: Infinity, duration: 0.2 }}
+                                        className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-red-600 border-4 border-white mb-4 shadow-[0_0_50px_rgba(220,38,38,0.6)]"
+                                      >
+                                          <Gavel className="text-white w-12 h-12" />
+                                      </motion.div>
+                                      <h2 className="text-6xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-2 drop-shadow-[0_4px_0_rgba(0,0,0,1)]">
+                                        FALTA<br/><span className="text-red-500">TÉCNICA</span>
                                       </h2>
-                                      <div className="h-1 w-24 bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto"></div>
+                                      <div className="bg-red-600 text-white font-bold px-4 py-1 inline-block transform -skew-x-12">
+                                          DESCALIFICANTE
+                                      </div>
                                    </div>
                                    
                                    {/* Info Panels */}
                                    <div className="space-y-4 mb-8">
-                                      {/* Violation Panel */}
-                                      <div className="bg-black/40 border border-slate-700 rounded p-4 flex gap-4 items-center">
-                                         <div className="text-red-500">
-                                            <AlertOctagon size={28} strokeWidth={1.5} />
-                                         </div>
-                                         <div className="text-left border-l border-slate-700 pl-4">
-                                            <h4 className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-1">INFRACCIÓN</h4>
-                                            <p className="text-white text-lg font-sans font-medium leading-tight">
-                                               "Intentar rechazar al MVP de tu corazón es ilegal."
-                                            </p>
-                                         </div>
-                                      </div>
-
-                                      {/* Penalty Panel */}
-                                      <div className="bg-black/40 border border-slate-700 rounded p-4 flex gap-4 items-center">
-                                         <div className="text-orange-500">
-                                            <Gavel size={28} strokeWidth={1.5} />
-                                         </div>
-                                         <div className="text-left border-l border-slate-700 pl-4">
-                                            <h4 className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-1">DECISIÓN ARBITRAL</h4>
-                                            <p className="text-white text-lg font-sans font-medium leading-tight">
-                                               "Posesión para el equipo local. Debes firmar el contrato."
-                                            </p>
-                                         </div>
+                                      <div className="bg-red-950/50 border border-red-500 rounded p-4 flex flex-col items-center text-center">
+                                         <p className="text-white text-xl font-bold uppercase mb-1">
+                                            "¡¡ NO PUEDES HACER ESO !!"
+                                         </p>
+                                         <p className="text-red-300 font-sans text-sm">
+                                            Rechazar esta oferta conlleva expulsión inmediata de la liga.
+                                         </p>
                                       </div>
                                    </div>
 
                                    {/* Action Button */}
                                    <button 
                                       onClick={onPropose}
-                                      className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white text-2xl py-4 rounded font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(234,88,12,0.4)] flex items-center justify-center gap-3 transition-all border border-white/10"
+                                      className="w-full bg-white hover:bg-slate-200 text-red-600 text-2xl py-4 rounded-xl font-black uppercase tracking-widest shadow-[0_0_30px_rgba(255,255,255,0.4)] flex items-center justify-center gap-3 transition-all scale-100 hover:scale-105 active:scale-95"
                                    >
-                                      <span className="relative z-10">ACATAR DECISIÓN (SÍ)</span>
+                                      <span className="relative z-10">ACEPTAR SANCIÓN (SÍ)</span>
                                    </button>
                                 </div>
                              </motion.div>
