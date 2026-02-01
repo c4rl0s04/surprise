@@ -185,10 +185,10 @@ export const JarvisTerminal = ({ onBack, onEngage, onAbort }: JarvisTerminalProp
                  <span className="text-[10px] text-red-500 font-bold">ALERTS</span>
              </div>
              <p className="text-[10px] text-red-400 font-mono leading-relaxed">
-                 > EXCESO DE BELLEZA DETECTADO<br/>
-                 > RESISTANCE IS FUTILE<br/>
-                 > DI QUE SÍ INMEDIATAMENTE<br/>
-                 > SOBRECALIENTAMIENTO DEL SISTEMA DEBIDO A NUESTRO AMOR
+                  &gt; EXCESO DE BELLEZA DETECTADO<br/>
+                  &gt; RESISTANCE IS FUTILE<br/>
+                  &gt; DI QUE SÍ INMEDIATAMENTE<br/>
+                  &gt; SOBRECALIENTAMIENTO DEL SISTEMA DEBIDO A NUESTRO AMOR
              </p>
          </div>
       </motion.div>
